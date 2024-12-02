@@ -10,7 +10,7 @@ public class Log {
 
     private static OssUtil ossUtil = null;
 
-    private static String log_path = "src\\main\\java\\com\\seecoder\\BlueWhale\\Log\\log.txt";
+    private static String log_path = "src\\main\\java\\com\\nju\\mystore\\Log\\log.txt";
 
     private static BufferedWriter writer = null;
 
