@@ -5,8 +5,10 @@ import com.nju.mystore.po.product.ProductAttribute;
 import com.nju.mystore.repository.product.NewProductRepository;
 import com.nju.mystore.repository.product.ProductAttributeRepository;
 import com.nju.mystore.repository.product.ProductAttributeValueRepository;
+import com.nju.mystore.service.NewProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor // 有这个就可以不用AutoWeired, 自动装配成员变量设置成final
-public class NewProductServiceImpl {
+public class NewProductServiceImpl implements NewProductService {
 
     private final NewProductRepository productRepository;
 
