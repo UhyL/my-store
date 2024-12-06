@@ -4,9 +4,7 @@ import com.nju.mystore.po.product.ProductAttribute;
 import com.nju.mystore.service.NewProductService;
 import com.nju.mystore.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.nju.mystore.po.product.NewProduct;
 
 import java.util.List;
@@ -18,13 +16,14 @@ public class NewProductController {
     @Autowired
     NewProductService newProductService;
 
-    @GetMapping("/getAttributesByCategory")
-    public ResultVO<List<ProductAttribute>> getAttributesByCategory(String productCategory) {
+    @GetMapping("/getAttributesByCategory/{productCategory}")
+    public ResultVO<List<ProductAttribute>> getAttributesByCategory( @PathVariable("productCategory") String productCategory) {
         return ResultVO.buildSuccess(newProductService.getAttributesByCategory(productCategory));
     }
 
-    @GetMapping("/filterProducts")
-    public ResultVO<List<NewProduct>> filterProducts(String productCategory, Map<String, String> filters) {
+    @GetMapping("/filterProducts/{productCategory}")
+    public ResultVO<List<NewProduct>> filterProducts(@PathVariable("productCategory")String productCategory,
+                                                     @RequestParam Map<String, String> filters) {
         return ResultVO.buildSuccess(newProductService.filterProducts(productCategory, filters));
     }
 
