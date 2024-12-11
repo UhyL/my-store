@@ -11,6 +11,7 @@ import com.nju.mystore.vo.CouponVO;
 import com.nju.mystore.vo.InvoiceVO;
 import com.nju.mystore.vo.ResultVO;
 import com.nju.mystore.vo.UserVO;
+import com.nju.mystore.vo.product.CartItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -110,5 +111,16 @@ public class UserController {
         Log.record_log("addAddress" + " " + "userId=" + user.getId());
         return ResultVO.buildSuccess(userService.addAddress(address));
     }
+
+    @GetMapping("/getshoppingCart/{userId}")
+    public  ResultVO<List<CartItemVO>> getshoppingCart(@PathVariable("userId") Integer userId) {
+        return ResultVO.buildSuccess(userService.getCartItems(userId));
+    }
+
+    @PostMapping("/addCartItem/{userId}")
+    public  ResultVO<Boolean> addCartItem(@PathVariable("userId") Integer userId, @RequestParam("productId") Integer productId, @RequestParam("quantity") Integer quantity) {
+        return ResultVO.buildSuccess(userService.addCartItem(userId, productId, quantity));
+    }
+
 }
 

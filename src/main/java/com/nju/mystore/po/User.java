@@ -71,6 +71,7 @@ public class User {
     private List<Integer> coupons;
 
 
+
     public UserVO toVO() {
         UserVO userVO = new UserVO();
         userVO.setId(this.id);

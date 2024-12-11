@@ -3,12 +3,18 @@ package com.nju.mystore.serviceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nju.mystore.exception.BlueWhaleException;
+import com.nju.mystore.po.Invoice;
+import com.nju.mystore.po.Product;
 import com.nju.mystore.po.User;
+import com.nju.mystore.po.product.CartItem;
+import com.nju.mystore.repository.ProductRepository;
 import com.nju.mystore.repository.UserRepository;
+import com.nju.mystore.repository.product.CartItemRepository;
 import com.nju.mystore.service.UserService;
 import com.nju.mystore.util.SecurityUtil;
 import com.nju.mystore.util.TokenUtil;
 import com.nju.mystore.vo.UserVO;
+import com.nju.mystore.vo.product.CartItemVO;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author: GaoZhaolong
@@ -32,6 +39,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    CartItemRepository cartItemRepository;
+
+    @Autowired
+    ProductRepository productRepository;
 
     @Autowired
     TokenUtil tokenUtil;
@@ -100,6 +113,23 @@ public class UserServiceImpl implements UserService {
     public List<String> getAllAddresses() {
         User user = securityUtil.getCurrentUser();
         return user.getAddresses();
+    }
+
+    @Override
+    public Boolean addCartItem(Integer userId, Integer productId, Integer quantity) {
+        CartItem cartItem = new CartItem();
+        cartItem.setUserId(userId);
+        cartItem.setQuantity(quantity);
+        Product product = productRepository.findByProductId(productId);
+        cartItem.setProduct(product);
+        cartItemRepository.save(cartItem);
+        return true;
+    }
+
+    @Override
+    public List<CartItemVO> getCartItems(Integer userId) {
+        List<CartItem> curr_cartItems = cartItemRepository.findByUserId(userId);
+        return curr_cartItems.stream().map(CartItem::toVO).collect(Collectors.toList());
     }
 
     @Override
