@@ -18,13 +18,11 @@ public class UserVO {
 
     private Integer id;
 
-    private String name;
 
     private String phone;
 
     private String password;
 
-    private Integer storeId;
 
     private String address;
 
@@ -41,16 +39,9 @@ public class UserVO {
     public User toPO(){
         User user=new User();
         user.setId(this.id);
-        user.setAddress(this.address);
-        user.setName(this.name);
         user.setPhone(this.phone);
         user.setRole(this.role);
-        user.setStoreId(this.storeId);
         user.setPassword(this.password);
-        user.setCreateTime(this.createTime);
-        user.setCoupons(this.coupons);
-        user.setAddresses(this.addresses);
-        user.setPhones(this.phones);
         return user;
     }
 }

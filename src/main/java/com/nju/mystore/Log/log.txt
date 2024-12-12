@@ -3,3 +3,4 @@ Mon Dec 02 13:20:09 CST 2024 login phone=13879182605 password=e10adc3949ba59abbe
 Mon Dec 02 13:20:10 CST 2024 getInformation
 Mon Dec 02 13:20:11 CST 2024 getAllStores
 Mon Dec 02 13:20:11 CST 2024 searchProduct storeId=null name= type=null minPrice=null maxPrice=null
+Thu Dec 12 22:20:58 CST 2024 register userName=13564038826

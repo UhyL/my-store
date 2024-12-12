@@ -14,9 +14,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByPhoneAndPassword(String phone, String password);
 
-    @Modifying
-    @Transactional
-    @Query("update User u SET u.address = :address WHERE u.id = :userId")
-    void updateUserByAddress(@Param("userId") Integer userId, @Param("address") String address);
+//    @Modifying
+//    @Transactional
+//    @Query("update User u SET u.address = :address WHERE u.id = :userId")
+//    void updateUserByAddress(@Param("userId") Integer userId, @Param("address") String address);
 
 }

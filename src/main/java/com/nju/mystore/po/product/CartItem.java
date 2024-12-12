@@ -1,8 +1,6 @@
 package com.nju.mystore.po.product;
 
 
-import com.nju.mystore.po.Product;
-import com.nju.mystore.vo.ProductVO;
 import com.nju.mystore.vo.product.CartItemVO;
 import lombok.Data;
 import lombok.Getter;
@@ -30,8 +28,8 @@ public class CartItem {
 
     private Integer quantity;
 
-    @ManyToOne
-    private Product product;
+//    @ManyToOne
+//    private Product product;
 
     private Date cartItemDate;
 
@@ -41,7 +39,7 @@ public class CartItem {
      cartItemVO.setUserId(this.userId);
      cartItemVO.setQuantity(this.quantity);
      cartItemVO.setCartItemDate(this.cartItemDate);
-     cartItemVO.setProduct(this.product);
+     //cartItemVO.setProduct(this.product);
      return cartItemVO;
     }
 }
