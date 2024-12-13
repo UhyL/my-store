@@ -58,8 +58,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer login(String phone, String password) {
-        User user = userRepository.findByPhoneAndPassword(phone, password);
+    public Integer login(UserVO userVO) {
+        User user = userRepository.findByPhoneAndPassword(userVO.getPhone(), userVO.getPassword());
         if (user == null) {
             throw BlueWhaleException.phoneOrPasswordError();
         }

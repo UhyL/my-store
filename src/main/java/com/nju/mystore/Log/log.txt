@@ -4,3 +4,17 @@ Mon Dec 02 13:20:10 CST 2024 getInformation
 Mon Dec 02 13:20:11 CST 2024 getAllStores
 Mon Dec 02 13:20:11 CST 2024 searchProduct storeId=null name= type=null minPrice=null maxPrice=null
 Thu Dec 12 22:20:58 CST 2024 register userName=13564038826
+Thu Dec 12 22:44:57 CST 2024 register userName=12314324
+Thu Dec 12 22:57:42 CST 2024 register userName=13564038826
+Thu Dec 12 22:57:48 CST 2024 未登录!
+Thu Dec 12 22:57:49 CST 2024 未登录!
+Thu Dec 12 22:57:50 CST 2024 未登录!
+Thu Dec 12 22:57:50 CST 2024 未登录!
+Thu Dec 12 22:57:50 CST 2024 未登录!
+Thu Dec 12 22:57:50 CST 2024 未登录!
+Thu Dec 12 22:57:52 CST 2024 未登录!
+Thu Dec 12 22:57:52 CST 2024 未登录!
+Fri Dec 13 10:58:07 CST 2024 register userName=13564038826
+Fri Dec 13 10:58:22 CST 2024 未登录!
+Fri Dec 13 10:59:32 CST 2024 未登录!
+Fri Dec 13 11:07:18 CST 2024 login phone=13564038826 password=123456

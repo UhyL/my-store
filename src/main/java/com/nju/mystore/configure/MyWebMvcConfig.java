@@ -16,20 +16,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class MyWebMvcConfig implements WebMvcConfigurer {
-    @Autowired
-    LoginInterceptor loginInterceptor;
 
     @Autowired
     AccessInterceptor accessInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/api/users/register")
-                .excludePathPatterns("/api/users/login")
-                .excludePathPatterns("/api/stores/getAllStores")
-                .order(1);
         registry.addInterceptor(accessInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/api/users/register")

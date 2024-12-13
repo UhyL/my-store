@@ -35,11 +35,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResultVO<Integer> login(@RequestParam("phone") String phone, @RequestParam("password") String password) {
+    public ResultVO<Integer> login(@RequestBody UserVO userVO) {
         Log.record_log("login" + " "
-                + "phone=" + phone + " "
-                + "password=" + password);
-        return ResultVO.buildSuccess(userService.login(phone, password));
+                + "phone=" + userVO.getPhone() + " "
+                + "password=" + userVO.getPassword());
+        return ResultVO.buildSuccess(userService.login(userVO));
     }
 
     @GetMapping

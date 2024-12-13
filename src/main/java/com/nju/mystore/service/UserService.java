@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService {
     Boolean register(UserVO userVO);
 
-    Integer login(String phone, String password);
+    Integer login(UserVO userVO);
 
     UserVO getInformation();
 
