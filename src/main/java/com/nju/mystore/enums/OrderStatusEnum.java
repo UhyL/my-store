@@ -1,6 +1,6 @@
 package com.nju.mystore.enums;
 
-public enum InvoiceStatusEnum {
+public enum OrderStatusEnum {
     UNPAID, // 待支付
     UNSEND, // 代发货
     UNGET, // 代收货

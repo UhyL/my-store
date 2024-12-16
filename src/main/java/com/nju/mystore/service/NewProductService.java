@@ -2,6 +2,7 @@ package com.nju.mystore.service;
 
 import com.nju.mystore.po.product.NewProduct;
 import com.nju.mystore.po.product.ProductAttribute;
+import com.nju.mystore.vo.product.CommentVO;
 
 import java.util.List;
 import java.util.Map;
@@ -17,4 +18,8 @@ public interface NewProductService {
      * 根据类别和属性筛选商品
      */
     List<NewProduct> filterProducts(String productCategory, Map<String, String> filters);
+
+    List<CommentVO> getCommentsByProductId(Integer productId);
+
+    Boolean addComment(CommentVO commentVO);
 }

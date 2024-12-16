@@ -1,15 +1,18 @@
 package com.nju.mystore.serviceImpl.product;
 
+import com.nju.mystore.po.product.Comment;
 import com.nju.mystore.po.product.NewProduct;
 import com.nju.mystore.po.product.ProductAttribute;
+import com.nju.mystore.repository.product.CommentRepository;
 import com.nju.mystore.repository.product.NewProductRepository;
 import com.nju.mystore.repository.product.ProductAttributeRepository;
 import com.nju.mystore.repository.product.ProductAttributeValueRepository;
 import com.nju.mystore.service.NewProductService;
+import com.nju.mystore.vo.product.CommentVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,6 +26,8 @@ public class NewProductServiceImpl implements NewProductService {
     private final ProductAttributeRepository productAttributeRepository;
 
     private final ProductAttributeValueRepository productAttributeValueRepository;
+
+    private final CommentRepository commentRepository;
 
     /**
      * 获取特定类别的商品的属性，如获取服饰的“部位”“季节”
@@ -51,5 +56,17 @@ public class NewProductServiceImpl implements NewProductService {
         }
 
         return products;
+    }
+
+    @Override
+    public List<CommentVO> getCommentsByProductId(Integer productId) {
+        List<Comment> comments = commentRepository.findByProductId(productId);
+        return comments.stream().map(Comment::toVO).collect(Collectors.toList());
+    }
+
+    @Override
+    public Boolean addComment(CommentVO commentVO) {
+        commentRepository.save(commentVO.toPO());
+        return true;
     }
 }

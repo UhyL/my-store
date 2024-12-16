@@ -17,19 +17,17 @@ import java.util.Date;
 @Data
 @Entity
 public class CartItem {
-    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-
+   @Id
     private Integer  cartItemId;
-
 
     private Integer userId;
 
     private Integer quantity;
 
-//    @ManyToOne
-//    private Product product;
+    @ManyToOne
+    private NewProduct product;
 
     private Date cartItemDate;
 
@@ -39,7 +37,7 @@ public class CartItem {
      cartItemVO.setUserId(this.userId);
      cartItemVO.setQuantity(this.quantity);
      cartItemVO.setCartItemDate(this.cartItemDate);
-     //cartItemVO.setProduct(this.product);
+     cartItemVO.setProduct(this.product);
      return cartItemVO;
     }
 }

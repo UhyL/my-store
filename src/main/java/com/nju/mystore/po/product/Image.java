@@ -1,7 +1,6 @@
-package com.nju.mystore.po;
+package com.nju.mystore.po.product;
 
-import com.nju.mystore.enums.ImageBelongEnum;
-import com.nju.mystore.vo.ImageVO;
+import com.nju.mystore.vo.AddressInfoVO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,15 +19,7 @@ public class Image {
     private int imageId;
 
     /**
-     * 图片属于店铺还是商品
-     */
-    @Basic
-    @Enumerated(EnumType.STRING)
-    @Column(name = "image_belong")
-    private ImageBelongEnum imageBelong;
-
-    /**
-     * 图片所属的店铺或商品的id
+     * 图片所属的商品的id
      */
     @Basic
     @Column(name = "belong_id")
@@ -42,10 +33,9 @@ public class Image {
     private String ossUrl;
 
 
-    public ImageVO toVO(){
-        ImageVO imageVO = new ImageVO();
+    public AddressInfoVO.ImageVO toVO(){
+        AddressInfoVO.ImageVO imageVO = new AddressInfoVO.ImageVO();
         imageVO.setImageId(this.imageId);
-        imageVO.setImageBelong(this.imageBelong);
         imageVO.setBelongId(this.belongId);
         imageVO.setOssUrl(this.ossUrl);
         return imageVO;
