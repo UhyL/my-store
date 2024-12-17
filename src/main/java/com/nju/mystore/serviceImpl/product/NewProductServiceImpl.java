@@ -1,12 +1,8 @@
 package com.nju.mystore.serviceImpl.product;
 
-import com.nju.mystore.po.product.Comment;
-import com.nju.mystore.po.product.NewProduct;
-import com.nju.mystore.po.product.ProductAttribute;
-import com.nju.mystore.repository.product.CommentRepository;
-import com.nju.mystore.repository.product.NewProductRepository;
-import com.nju.mystore.repository.product.ProductAttributeRepository;
-import com.nju.mystore.repository.product.ProductAttributeValueRepository;
+import com.nju.mystore.enums.product.ProductCategory;
+import com.nju.mystore.po.product.*;
+import com.nju.mystore.repository.product.*;
 import com.nju.mystore.service.NewProductService;
 import com.nju.mystore.vo.product.CommentVO;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +24,10 @@ public class NewProductServiceImpl implements NewProductService {
 
     private final CommentRepository commentRepository;
 
+    private final ProductOptionRepository productOptionRepository;
+
+    private final ProductOptionValueRepository productOptionValueRepository;
+
     /**
      * 获取特定类别的商品的属性，如获取服饰的“部位”“季节”
      */
@@ -40,10 +40,8 @@ public class NewProductServiceImpl implements NewProductService {
      */
     public List<NewProduct> filterProducts(String productCategory, Map<String, String> filters) {
         // 根据类别筛选商品
-        List<NewProduct> products = productRepository.findAll()
-                .stream()
-                .filter(p -> p.getProductCategory().name().equals(productCategory))
-                .collect(Collectors.toList());
+        ProductCategory category = ProductCategory.valueOf(productCategory);
+        List<NewProduct> products = productRepository.findByProductCategory(category);
 
         // 根据属性动态筛选
         for (Map.Entry<String, String> filter : filters.entrySet()) {
@@ -67,5 +65,15 @@ public class NewProductServiceImpl implements NewProductService {
     public Boolean addComment(CommentVO commentVO) {
         commentRepository.save(commentVO.toPO());
         return true;
+    }
+
+    @Override
+    public List<ProductOption> getProductOptions(Integer productId) {
+        return productOptionRepository.findByProductId(productId);
+    }
+
+    @Override
+    public List<ProductOptionValue> getProductOptionValues(Integer productId) {
+        return productOptionValueRepository.findByProductId(productId);
     }
 }

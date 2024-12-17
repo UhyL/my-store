@@ -1,6 +1,8 @@
 package com.nju.mystore.controller;
 
 import com.nju.mystore.po.product.ProductAttribute;
+import com.nju.mystore.po.product.ProductOption;
+import com.nju.mystore.po.product.ProductOptionValue;
 import com.nju.mystore.service.NewProductService;
 import com.nju.mystore.vo.ResultVO;
 import com.nju.mystore.vo.product.CommentVO;
@@ -37,4 +39,15 @@ public class NewProductController {
     public ResultVO<Boolean> addComment(@RequestBody CommentVO commentVO) {
         return ResultVO.buildSuccess(newProductService.addComment(commentVO));
     }
+
+    @GetMapping("/getProductOptions/{productId}")
+    public ResultVO<List<ProductOption>> getProductOptions(@PathVariable("productId") Integer productId) {
+        return ResultVO.buildSuccess(newProductService.getProductOptions(productId));
+    }
+
+    @GetMapping("/getProductOptionValues/{productId}")
+    public ResultVO<List<ProductOptionValue>> getProductOptionValues(@PathVariable("productId") Integer productId) {
+        return ResultVO.buildSuccess(newProductService.getProductOptionValues(productId));
+    }
+
 }

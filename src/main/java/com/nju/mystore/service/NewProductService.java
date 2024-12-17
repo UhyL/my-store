@@ -2,6 +2,8 @@ package com.nju.mystore.service;
 
 import com.nju.mystore.po.product.NewProduct;
 import com.nju.mystore.po.product.ProductAttribute;
+import com.nju.mystore.po.product.ProductOption;
+import com.nju.mystore.po.product.ProductOptionValue;
 import com.nju.mystore.vo.product.CommentVO;
 
 import java.util.List;
@@ -22,4 +24,8 @@ public interface NewProductService {
     List<CommentVO> getCommentsByProductId(Integer productId);
 
     Boolean addComment(CommentVO commentVO);
+
+    List<ProductOption> getProductOptions(Integer productId);
+
+    List<ProductOptionValue> getProductOptionValues(Integer productId);
 }

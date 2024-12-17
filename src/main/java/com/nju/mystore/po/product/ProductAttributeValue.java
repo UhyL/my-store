@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class ProductAttributeValue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     private NewProduct product; // 关联商品
