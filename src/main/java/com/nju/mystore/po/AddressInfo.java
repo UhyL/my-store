@@ -42,7 +42,7 @@ public class AddressInfo {
         AddressInfoVO addressInfoVO = new AddressInfoVO();
         addressInfoVO.setAddressInfoId(this.addressInfoId);
         addressInfoVO.setUserId(this.userId);
-        addressInfoVO.setAreaAdress(this.areaAddress);
+        addressInfoVO.setAreaAddress(this.areaAddress);
         addressInfoVO.setDetailAddress(this.detailAddress);
         addressInfoVO.setPhoneNumber(this.phoneNumber);
         addressInfoVO.setReceiver(this.receiver);

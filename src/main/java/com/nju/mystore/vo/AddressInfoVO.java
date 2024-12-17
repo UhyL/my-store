@@ -17,7 +17,7 @@ public class AddressInfoVO {
 
     private Integer userId;
 
-    private List<String> areaAdress;
+    private List<String> areaAddress;
 
     private String detailAddress;
 
@@ -31,7 +31,7 @@ public class AddressInfoVO {
         AddressInfo addressInfo = new AddressInfo();
         addressInfo.setAddressInfoId(this.addressInfoId);
         addressInfo.setUserId(this.userId);
-        addressInfo.setAreaAddress(this.areaAdress);
+        addressInfo.setAreaAddress(this.areaAddress);
         addressInfo.setDetailAddress(this.detailAddress);
         addressInfo.setPhoneNumber(this.phoneNumber);
         addressInfo.setReceiver(this.receiver);

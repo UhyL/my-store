@@ -2,11 +2,14 @@ package com.nju.mystore.vo;
 
 import com.nju.mystore.enums.OrderStatusEnum;
 import com.nju.mystore.po.OrderInfo;
+import com.nju.mystore.vo.product.CartItemVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Getter

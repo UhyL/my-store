@@ -37,5 +37,4 @@ public class NewProductController {
     public ResultVO<Boolean> addComment(@RequestBody CommentVO commentVO) {
         return ResultVO.buildSuccess(newProductService.addComment(commentVO));
     }
-
 }

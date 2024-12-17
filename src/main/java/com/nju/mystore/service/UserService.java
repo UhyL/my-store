@@ -1,5 +1,6 @@
 package com.nju.mystore.service;
 
+import com.nju.mystore.vo.NoticeVO;
 import com.nju.mystore.vo.OrderInfoVO;
 import com.nju.mystore.vo.UserVO;
 import com.nju.mystore.vo.AddressInfoVO;
@@ -31,4 +32,6 @@ public interface UserService {
     Boolean deleteAddressInfo(AddressInfoVO addressInfoVO);
 
     OrderInfoVO cartItemToOrder(Integer userId, Integer addressInfoId);
+
+    List<NoticeVO> getAllNotices(Integer userId);
 }

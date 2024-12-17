@@ -1,6 +1,5 @@
 package com.nju.mystore.controller;
 
-import com.nju.mystore.Log.Log;
 import com.nju.mystore.service.OrderService;
 import com.nju.mystore.service.UserService;
 import com.nju.mystore.util.SecurityUtil;
@@ -29,21 +28,16 @@ public class UserController {
 
     @PostMapping("/register")
     public ResultVO<Boolean> register(@RequestBody UserVO userVO) {
-        Log.record_log("register" + " " + "userName=" + userVO.getPhone());
         return ResultVO.buildSuccess(userService.register(userVO));
     }
 
     @PostMapping("/login")
     public ResultVO<Integer> login(@RequestBody UserVO userVO) {
-        Log.record_log("login" + " "
-                + "phone=" + userVO.getPhone() + " "
-                + "password=" + userVO.getPassword());
         return ResultVO.buildSuccess(userService.login(userVO));
     }
 
     @GetMapping
     public ResultVO<UserVO> getInformation() {
-        Log.record_log("getInformation");
         return ResultVO.buildSuccess(userService.getInformation());
     }
 
