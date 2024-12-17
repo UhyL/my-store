@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 @Getter
 @Setter
 @NoArgsConstructor
 public class ProductAttributeValueVO {
 
-    private Long id;
+    private Integer id;
 
     private NewProduct product; // 关联商品
 
