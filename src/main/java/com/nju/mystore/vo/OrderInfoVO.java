@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -21,7 +22,7 @@ public class OrderInfoVO {
 
     private Integer userId;
 
-    private Map<Integer, Integer> products;
+    private List<CartItemVO> products;
 
     private Integer addressInfoId;
 
@@ -35,7 +36,7 @@ public class OrderInfoVO {
         OrderInfo orderInfo = new OrderInfo();
         orderInfo.setOrderInfoId(this.orderInfoId);
         orderInfo.setUserId(this.userId);
-        orderInfo.setProducts(this.products);
+        orderInfo.setProducts(this.products.stream().map(CartItemVO::toPO).collect(Collectors.toList()));
         orderInfo.setAddressInfoId(this.addressInfoId);
         orderInfo.setOrderStatus(this.orderStatus);
         orderInfo.setTotalPrice(this.totalPrice);

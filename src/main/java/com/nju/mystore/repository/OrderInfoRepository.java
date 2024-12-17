@@ -2,6 +2,7 @@ package com.nju.mystore.repository;
 
 import com.nju.mystore.enums.OrderStatusEnum;
 import com.nju.mystore.po.OrderInfo;
+import com.nju.mystore.po.product.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,5 +28,5 @@ public interface OrderInfoRepository extends JpaRepository<OrderInfo, Integer> {
     @Modifying
     @Transactional
     @Query("UPDATE OrderInfo oi SET oi.products = :products WHERE oi.orderInfoId = :orderInfoId")
-    void updateProductQuantity(Integer orderInfoId, Map<Integer, Integer> products);
+    void updateProductQuantity(Integer orderInfoId, List<CartItem> products);
 }
