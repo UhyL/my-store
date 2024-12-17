@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,6 +30,9 @@ public class CartItem {
     @ManyToOne
     private NewProduct product;
 
+    @OneToMany
+    private List<ProductOptionValue> productOptionValues;
+
     private Date cartItemDate;
 
     public CartItemVO toVO() {
@@ -38,6 +42,7 @@ public class CartItem {
      cartItemVO.setQuantity(this.quantity);
      cartItemVO.setCartItemDate(this.cartItemDate);
      cartItemVO.setProduct(this.product);
+     cartItemVO.setProductOptionValues(this.productOptionValues);
      return cartItemVO;
     }
 }

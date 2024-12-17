@@ -2,6 +2,7 @@ package com.nju.mystore.vo.product;
 
 import com.nju.mystore.po.product.CartItem;
 import com.nju.mystore.po.product.NewProduct;
+import com.nju.mystore.po.product.ProductOptionValue;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,8 @@ public class CartItemVO {
 
     private NewProduct product;
 
+    private List<ProductOptionValue> productOptionValues;
+
     private Date cartItemDate;
 
     public CartItem toPO() {
@@ -32,6 +35,7 @@ public class CartItemVO {
         cartItem.setQuantity(this.quantity);
         cartItem.setCartItemDate(this.cartItemDate);
         cartItem.setProduct(this.product);
+        cartItem.setProductOptionValues(this.productOptionValues);
         return cartItem;
     }
 }
