@@ -136,10 +136,9 @@ public class UserServiceImpl implements UserService {
         List<CartItem> cartItems = cartItemRepository.findByUserId(userId);
         OrderInfo orderInfo = new OrderInfo();
         double totalPrice = 0;
-        for(CartItem cartItem : cartItems) {
-            orderInfo.getProducts().put(cartItem.getCartItemId(), cartItem.getQuantity());
+        for(CartItem cartItem : cartItems)
             totalPrice += cartItem.getProduct().getProductPrice();
-        }
+        orderInfo.setProducts(cartItems);
         orderInfo.setOrderStatus(OrderStatusEnum.UNPAID);
         orderInfo.setUserId(userId);
         orderInfo.setTotalPrice(totalPrice);

@@ -1,6 +1,7 @@
 package com.nju.mystore.service;
 
 import com.nju.mystore.vo.OrderInfoVO;
+import com.nju.mystore.vo.product.CartItemVO;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
@@ -13,7 +14,8 @@ public interface OrderService {
 
     Boolean deleteOrder(Integer orderId);
 
-    Boolean deleteProduct(Integer orderId, Integer productId);
 
-    Boolean updateProduct(Integer orderId, Integer productId, Integer quantity);
+    Boolean deleteProduct(Integer orderId, CartItemVO cartItemVO);
+
+    Boolean updateProduct(Integer orderId, CartItemVO cartItemVO);
 }

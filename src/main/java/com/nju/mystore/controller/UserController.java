@@ -3,10 +3,7 @@ package com.nju.mystore.controller;
 import com.nju.mystore.service.OrderService;
 import com.nju.mystore.service.UserService;
 import com.nju.mystore.util.SecurityUtil;
-import com.nju.mystore.vo.AddressInfoVO;
-import com.nju.mystore.vo.OrderInfoVO;
-import com.nju.mystore.vo.ResultVO;
-import com.nju.mystore.vo.UserVO;
+import com.nju.mystore.vo.*;
 import com.nju.mystore.vo.product.CartItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -97,13 +94,23 @@ public class UserController {
     }
 
     @PostMapping("/deleteProduct")
-    public ResultVO<Boolean> deleteProduct(@RequestParam("orderId") Integer orderId, @RequestParam ("productId") Integer productId) {
-        return ResultVO.buildSuccess(orderService.deleteProduct(orderId, productId));
+    public ResultVO<Boolean> deleteProduct(@RequestParam("orderId") Integer orderId, @RequestBody CartItemVO cartItemVO) {
+        return ResultVO.buildSuccess(orderService.deleteProduct(orderId, cartItemVO));
     }
 
     @PostMapping("/updateProduct")
-    public ResultVO<Boolean> updateProduct(@RequestParam("orderId") Integer orderId, @RequestParam ("productId") Integer productId, @RequestParam("quantity") Integer quantity) {
-        return ResultVO.buildSuccess(orderService.updateProduct(orderId, productId, quantity));
+    public ResultVO<Boolean> updateProduct(@RequestParam("orderId") Integer orderId, @RequestBody CartItemVO cartItemVO) {
+        return ResultVO.buildSuccess(orderService.updateProduct(orderId,cartItemVO));
+    }
+
+    @PostMapping("/cartItemToOrder/{userId}")
+    public ResultVO<OrderInfoVO> cartItemToOrder(@PathVariable("userId") Integer userId, @RequestParam("addressInfoId") Integer addressInfoId) {
+        return ResultVO.buildSuccess(userService.cartItemToOrder(userId, addressInfoId));
+    }
+
+    @GetMapping("/getAllNotices/{userId}")
+    public ResultVO<List<NoticeVO>> getAllNotices(@PathVariable("userId") Integer userId) {
+        return ResultVO.buildSuccess(userService.getAllNotices(userId));
     }
 }
 

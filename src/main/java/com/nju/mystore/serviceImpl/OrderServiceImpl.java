@@ -1,16 +1,17 @@
 package com.nju.mystore.serviceImpl;
 
 import com.nju.mystore.po.OrderInfo;
+import com.nju.mystore.po.product.CartItem;
 import com.nju.mystore.repository.OrderInfoRepository;
 import com.nju.mystore.service.OrderService;
 import com.nju.mystore.vo.OrderInfoVO;
+import com.nju.mystore.vo.product.CartItemVO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,18 +40,30 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Boolean deleteProduct(Integer orderId, Integer productId) {
-        Map<Integer, Integer> products = orderInfoRepository.findById(orderId).get().getProducts();
-        products.remove(productId);
-        orderInfoRepository.updateProductQuantity(productId, products);
+    public Boolean deleteProduct(Integer orderId, CartItemVO cartItemVO) {
+        CartItem cartItem = cartItemVO.toPO();
+        List<CartItem> products = orderInfoRepository.findById(orderId).get().getProducts();
+        products.remove(cartItem);
+        orderInfoRepository.updateProductQuantity(orderId, products);
         return true;
     }
 
     @Override
-    public Boolean updateProduct(Integer orderId, Integer productId, Integer quantity) {
-        Map<Integer, Integer> products = orderInfoRepository.findById(orderId).get().getProducts();
-        products.put(productId, quantity);
-        orderInfoRepository.updateProductQuantity(productId, products);
+    public Boolean updateProduct(Integer orderId, CartItemVO cartItemVO) {
+        List<CartItem> products = orderInfoRepository.findById(orderId).get().getProducts();
+        boolean flag = false;
+        for(CartItem cartItem : products) {
+            if(Objects.equals(cartItem.getCartItemId(), cartItemVO.getCartItemId())) {
+                cartItem.setQuantity(cartItemVO.getQuantity());
+                flag = true;
+                break;
+            }
+        }
+
+        if(!flag)
+            products.add(cartItemVO.toPO());
+
+        orderInfoRepository.updateProductQuantity(orderId, products);
         return true;
     }
 }
