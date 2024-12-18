@@ -27,8 +27,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
-
-
+    @Basic
+    @Column(name = "relatedId")
+    private Integer related_id;
 
 
     public UserVO toVO() {
@@ -36,6 +37,7 @@ public class User {
         userVO.setId(this.id);
         userVO.setPhone(this.phone);
         userVO.setPassword(this.password);
+        userVO.setRelated_id(this.related_id);
         return userVO;
     }
 }

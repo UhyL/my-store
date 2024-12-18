@@ -112,5 +112,10 @@ public class UserController {
     public ResultVO<List<NoticeVO>> getAllNotices(@PathVariable("userId") Integer userId) {
         return ResultVO.buildSuccess(userService.getAllNotices(userId));
     }
+
+    @GetMapping("/getRelatedId/{userId}")
+    public ResultVO<Integer> getRelatedId(@PathVariable("userId") Integer userId) {
+        return ResultVO.buildSuccess(userService.getRelatedId(userId));
+    }
 }
 

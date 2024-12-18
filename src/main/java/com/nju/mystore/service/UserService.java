@@ -34,4 +34,6 @@ public interface UserService {
     OrderInfoVO cartItemToOrder(Integer userId, Integer addressInfoId);
 
     List<NoticeVO> getAllNotices(Integer userId);
+
+    Integer getRelatedId(Integer userId);
 }

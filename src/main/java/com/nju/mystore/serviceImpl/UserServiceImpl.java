@@ -153,4 +153,10 @@ public class UserServiceImpl implements UserService {
         List<Notice> notices = noticeRepository.findByUserId(userId);
         return notices.stream().map(Notice::toVO).collect(Collectors.toList());
     }
+
+    @Override
+    public Integer getRelatedId(Integer userId) {
+        return userRepository.findById(userId).get().getRelated_id();
+    }
+
 }
