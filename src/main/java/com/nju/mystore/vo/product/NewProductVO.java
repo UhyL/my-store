@@ -21,6 +21,7 @@ public class NewProductVO {
 
     private Double productPrice;
 
+    private Double nowPrice;
 
     public NewProduct toPO() {
         NewProduct newProduct = new NewProduct();
@@ -28,6 +29,7 @@ public class NewProductVO {
         newProduct.setProductCategory(this.productCategory);
         newProduct.setProductName(this.productName);
         newProduct.setProductPrice(this.productPrice);
+        newProduct.setNowPrice(this.nowPrice);
         return newProduct;
     }
 }

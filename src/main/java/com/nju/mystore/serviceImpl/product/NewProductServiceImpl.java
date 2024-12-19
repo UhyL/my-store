@@ -5,9 +5,11 @@ import com.nju.mystore.po.product.*;
 import com.nju.mystore.repository.product.*;
 import com.nju.mystore.service.NewProductService;
 import com.nju.mystore.vo.product.CommentVO;
+import com.nju.mystore.vo.product.NewProductVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -75,5 +77,11 @@ public class NewProductServiceImpl implements NewProductService {
     @Override
     public List<ProductOptionValue> getProductOptionValues(Integer productId) {
         return productOptionValueRepository.findByProductId(productId);
+    }
+
+    @Override
+    public List<NewProductVO> getAllDiscountProducts() {
+        List<NewProduct> products = productRepository.findProductsWithMismatchedPrices();
+        return products.stream().map(NewProduct::toVO).collect(Collectors.toList());
     }
 }

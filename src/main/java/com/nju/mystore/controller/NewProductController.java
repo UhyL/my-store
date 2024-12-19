@@ -6,7 +6,9 @@ import com.nju.mystore.po.product.ProductOptionValue;
 import com.nju.mystore.service.NewProductService;
 import com.nju.mystore.vo.ResultVO;
 import com.nju.mystore.vo.product.CommentVO;
+import com.nju.mystore.vo.product.NewProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.nju.mystore.po.product.NewProduct;
 
@@ -50,4 +52,8 @@ public class NewProductController {
         return ResultVO.buildSuccess(newProductService.getProductOptionValues(productId));
     }
 
+    @GetMapping("/getAllDiscountProduct")
+    public ResultVO<List<NewProductVO>> getAllDiscountProduct() {
+        return ResultVO.buildSuccess(newProductService.getAllDiscountProducts());
+    }
 }

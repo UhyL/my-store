@@ -5,6 +5,7 @@ import com.nju.mystore.po.product.ProductAttribute;
 import com.nju.mystore.po.product.ProductOption;
 import com.nju.mystore.po.product.ProductOptionValue;
 import com.nju.mystore.vo.product.CommentVO;
+import com.nju.mystore.vo.product.NewProductVO;
 
 import java.util.List;
 import java.util.Map;
@@ -28,4 +29,6 @@ public interface NewProductService {
     List<ProductOption> getProductOptions(Integer productId);
 
     List<ProductOptionValue> getProductOptionValues(Integer productId);
+
+    List<NewProductVO> getAllDiscountProducts();
 }

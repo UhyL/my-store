@@ -112,5 +112,15 @@ public class UserController {
     public ResultVO<List<NoticeVO>> getAllNotices(@PathVariable("userId") Integer userId) {
         return ResultVO.buildSuccess(userService.getAllNotices(userId));
     }
+
+    @GetMapping("/getAllUNREAD/{userId}")
+    public ResultVO<List<NoticeVO>> getAllUNREAD(@PathVariable("userId") Integer userId) {
+        return  ResultVO.buildSuccess(userService.getAllUNREADNotices(userId));
+    }
+
+    @PostMapping("/changeNoticeStatus")
+    public ResultVO<Boolean> changeNoticeStatus(@RequestParam ("noticeId") Integer noticeId) {
+        return ResultVO.buildSuccess(userService.changeNoticeStatus(noticeId));
+    }
 }
 

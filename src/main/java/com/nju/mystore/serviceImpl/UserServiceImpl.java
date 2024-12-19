@@ -1,5 +1,6 @@
 package com.nju.mystore.serviceImpl;
 
+import com.nju.mystore.enums.NoticeStatusEnum;
 import com.nju.mystore.enums.OrderStatusEnum;
 import com.nju.mystore.exception.MyStoreException;
 import com.nju.mystore.po.Notice;
@@ -25,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -152,5 +154,17 @@ public class UserServiceImpl implements UserService {
     public List<NoticeVO> getAllNotices(Integer userId) {
         List<Notice> notices = noticeRepository.findByUserId(userId);
         return notices.stream().map(Notice::toVO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<NoticeVO> getAllUNREADNotices(Integer userId) {
+        List<Notice> notices = noticeRepository.findByNoticeStatusAndUserId(NoticeStatusEnum.UNREAD, userId);
+        return notices.stream().map(Notice::toVO).collect(Collectors.toList());
+    }
+
+    @Override
+    public Boolean changeNoticeStatus(Integer noticeId) {
+        noticeRepository.updateNoticeStatusByNoticeId(noticeId, NoticeStatusEnum.DONE);
+        return true;
     }
 }

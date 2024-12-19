@@ -1,5 +1,6 @@
 package com.nju.mystore.po;
 
+import com.nju.mystore.enums.NoticeStatusEnum;
 import com.nju.mystore.enums.NoticeTitleEnum;
 import com.nju.mystore.vo.NoticeVO;
 import lombok.Getter;
@@ -30,6 +31,8 @@ public class Notice {
 
     private Date createTime;
 
+    private NoticeStatusEnum noticeStatus;
+
     public NoticeVO toVO() {
         NoticeVO vo = new NoticeVO();
         vo.setNoticeId(this.noticeId);
@@ -37,6 +40,7 @@ public class Notice {
         vo.setNoticeTitle(this.noticeTitle);
         vo.setNoticeContent(this.noticeContent);
         vo.setCreateTime(this.createTime);
+        vo.setNoticeStatus(this.noticeStatus);
         return vo;
     }
 }

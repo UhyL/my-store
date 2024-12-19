@@ -34,4 +34,8 @@ public interface UserService {
     OrderInfoVO cartItemToOrder(Integer userId, Integer addressInfoId);
 
     List<NoticeVO> getAllNotices(Integer userId);
+
+    List<NoticeVO> getAllUNREADNotices(Integer userId);
+
+    Boolean changeNoticeStatus(Integer noticeId);
 }

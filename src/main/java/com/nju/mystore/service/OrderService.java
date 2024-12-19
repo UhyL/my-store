@@ -2,7 +2,6 @@ package com.nju.mystore.service;
 
 import com.nju.mystore.vo.OrderInfoVO;
 import com.nju.mystore.vo.product.CartItemVO;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 
