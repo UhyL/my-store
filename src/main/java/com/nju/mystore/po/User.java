@@ -1,5 +1,6 @@
 package com.nju.mystore.po;
 
+import com.nju.mystore.enums.UserRoleEnum;
 import com.nju.mystore.vo.UserVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,11 @@ public class User {
     @Id
     @Column(name = "id")
     private Integer id;
+
+    @Basic
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private UserRoleEnum role;
 
     // 设置为默认电话
     @Basic
@@ -38,6 +44,7 @@ public class User {
         userVO.setPhone(this.phone);
         userVO.setPassword(this.password);
         userVO.setRelated_id(this.related_id);
+        userVO.setRole(this.role);
         return userVO;
     }
 }

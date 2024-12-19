@@ -1,5 +1,6 @@
 package com.nju.mystore.vo;
 
+import com.nju.mystore.enums.UserRoleEnum;
 import com.nju.mystore.po.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,6 +15,7 @@ public class UserVO {
 
     private Integer id;
 
+    private UserRoleEnum role;
 
     private String phone;
 
@@ -27,6 +29,7 @@ public class UserVO {
         user.setPhone(this.phone);
         user.setPassword(this.password);
         user.setRelated_id(this.related_id);
+        user.setRole(this.role);
         return user;
     }
 }
