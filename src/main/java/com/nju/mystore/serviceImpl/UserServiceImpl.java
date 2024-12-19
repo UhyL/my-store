@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -154,6 +153,11 @@ public class UserServiceImpl implements UserService {
     public List<NoticeVO> getAllNotices(Integer userId) {
         List<Notice> notices = noticeRepository.findByUserId(userId);
         return notices.stream().map(Notice::toVO).collect(Collectors.toList());
+    }
+
+    @Override
+    public Integer getRelatedId(Integer userId) {
+        return userRepository.findById(userId).get().getRelated_id();
     }
 
     @Override

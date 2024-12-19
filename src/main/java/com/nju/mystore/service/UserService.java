@@ -35,6 +35,8 @@ public interface UserService {
 
     List<NoticeVO> getAllNotices(Integer userId);
 
+    Integer getRelatedId(Integer userId);
+
     List<NoticeVO> getAllUNREADNotices(Integer userId);
 
     Boolean changeNoticeStatus(Integer noticeId);

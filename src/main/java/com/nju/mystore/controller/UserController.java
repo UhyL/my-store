@@ -113,6 +113,11 @@ public class UserController {
         return ResultVO.buildSuccess(userService.getAllNotices(userId));
     }
 
+    @GetMapping("/getRelatedId/{userId}")
+    public ResultVO<Integer> getRelatedId(@PathVariable("userId") Integer userId) {
+        return ResultVO.buildSuccess(userService.getRelatedId(userId));
+    }
+
     @GetMapping("/getAllUNREAD/{userId}")
     public ResultVO<List<NoticeVO>> getAllUNREAD(@PathVariable("userId") Integer userId) {
         return  ResultVO.buildSuccess(userService.getAllUNREADNotices(userId));

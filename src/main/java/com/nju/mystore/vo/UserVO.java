@@ -19,13 +19,14 @@ public class UserVO {
 
     private String password;
 
-
+    private Integer related_id;
 
     public User toPO(){
         User user=new User();
         user.setId(this.id);
         user.setPhone(this.phone);
         user.setPassword(this.password);
+        user.setRelated_id(this.related_id);
         return user;
     }
 }
